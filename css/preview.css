@@ -1,0 +1,318 @@
+/* ============================================================
+   preview.css — CV Preview & Print Styles
+   CV Generator | Resume Card, Typography, @media print
+   ============================================================ */
+
+/* ─── CV Variables ───────────────────────────────────────────── */
+:root {
+  --preview-bg:       #faf8f4;
+  --preview-text:     #1a1a1a;
+  --preview-muted:    #555555;
+  --preview-light:    #888888;
+  --preview-accent:   #1a1a1a;
+  --preview-border:   #e0dcd6;
+  --preview-tag-bg:   #f0ede6;
+  --preview-tag-border: #d8d4cc;
+
+  --cv-font-display: 'DM Serif Display', Georgia, serif;
+  --cv-font-body:    'DM Sans', system-ui, sans-serif;
+}
+
+/* ─── Preview Panel Wrapper ──────────────────────────────────── */
+.preview-panel {
+  background: #e8e4de;
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 24px 48px;
+}
+
+/* ─── CV Paper Card ──────────────────────────────────────────── */
+#cv-output {
+  background: var(--preview-bg);
+  color: var(--preview-text);
+  width: 100%;
+  max-width: 700px;
+  min-height: 880px;
+  border-radius: 10px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.10),
+    0 24px 64px rgba(0, 0, 0, 0.08);
+  padding: 56px 56px 64px;
+  font-family: var(--cv-font-body);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Empty State ────────────────────────────────────────────── */
+.cv-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 620px;
+  gap: 14px;
+  color: #aaa;
+  text-align: center;
+}
+
+.cv-empty .empty-icon {
+  font-size: 3rem;
+  opacity: 0.28;
+}
+
+.cv-empty p {
+  font-size: 0.875rem;
+  max-width: 260px;
+  line-height: 1.65;
+  color: #bbb;
+}
+
+.cv-empty strong {
+  color: #999;
+}
+
+/* ─── CV Header ──────────────────────────────────────────────── */
+.cv-header {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--preview-accent);
+}
+
+.cv-name {
+  font-family: var(--cv-font-display);
+  font-size: 2.4rem;
+  line-height: 1.08;
+  color: var(--preview-accent);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.cv-job-title {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--preview-muted);
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
+}
+
+.cv-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  font-size: 0.78rem;
+  color: var(--preview-light);
+}
+
+.cv-contact span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cv-contact a {
+  color: var(--preview-light);
+  text-decoration: none;
+}
+
+.cv-contact a:hover {
+  color: var(--preview-accent);
+  text-decoration: underline;
+}
+
+/* ─── CV Section Wrapper ─────────────────────────────────────── */
+.cv-section {
+  margin-bottom: 26px;
+}
+
+/* ─── CV Section Heading ─────────────────────────────────────── */
+.cv-section-title {
+  font-family: var(--cv-font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--preview-accent);
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--preview-accent);
+}
+
+/* ─── Profile Summary ────────────────────────────────────────── */
+.cv-summary {
+  font-size: 0.875rem;
+  color: var(--preview-muted);
+  line-height: 1.75;
+}
+
+/* ─── Entry Block (Experience, Education, Projects) ──────────── */
+.cv-entry {
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--preview-border);
+}
+
+.cv-entry:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.cv-entry-title {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: var(--preview-accent);
+  line-height: 1.3;
+}
+
+.cv-entry-date {
+  font-size: 0.72rem;
+  color: var(--preview-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cv-entry-sub {
+  font-size: 0.82rem;
+  color: var(--preview-muted);
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.cv-entry-desc {
+  font-size: 0.83rem;
+  color: #444;
+  line-height: 1.68;
+  white-space: pre-line; /* preserves line breaks from textarea */
+}
+
+/* ─── Project-specific ───────────────────────────────────────── */
+.cv-entry-stack {
+  font-size: 0.73rem;
+  color: var(--preview-light);
+  margin-bottom: 5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.cv-entry-link {
+  display: inline-block;
+  font-size: 0.73rem;
+  color: var(--preview-muted);
+  text-decoration: none;
+  margin-top: 4px;
+  border-bottom: 1px solid var(--preview-border);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.cv-entry-link:hover {
+  color: var(--preview-accent);
+  border-color: var(--preview-accent);
+}
+
+/* ─── Skills ─────────────────────────────────────────────────── */
+.cv-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cv-skill-tag {
+  background: var(--preview-tag-bg);
+  border: 1px solid var(--preview-tag-border);
+  border-radius: 4px;
+  padding: 3px 11px;
+  font-size: 0.76rem;
+  color: var(--preview-accent);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* ─── Print / Save as PDF ────────────────────────────────────── */
+@media print {
+  /* Hide everything except the CV */
+  .app-header,
+  .form-panel,
+  .section-nav,
+  .header-actions {
+    display: none !important;
+  }
+
+  /* Reset page chrome */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  html,
+  body {
+    height: auto;
+    overflow: visible;
+    background: white;
+  }
+
+  .app-main {
+    display: block;
+    overflow: visible;
+  }
+
+  /* Preview panel becomes full page */
+  .preview-panel {
+    background: white !important;
+    padding: 0 !important;
+    display: block;
+    overflow: visible;
+  }
+
+  /* CV card resets for print */
+  #cv-output {
+    max-width: 100%;
+    width: 100%;
+    min-height: auto;
+    border-radius: 0;
+    box-shadow: none !important;
+    padding: 18mm 20mm 20mm;
+    font-size: 10pt;
+    line-height: 1.55;
+  }
+
+  /* Prevent orphaned entries across pages */
+  .cv-entry,
+  .cv-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .cv-section-title {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Adjust name size for print */
+  .cv-name {
+    font-size: 26pt;
+  }
+
+  /* Hide empty state if visible */
+  .cv-empty {
+    display: none !important;
+  }
+
+  /* Ensure links print readable */
+  .cv-entry-link,
+  .cv-contact a {
+    color: #333 !important;
+    text-decoration: none;
+  }
+}

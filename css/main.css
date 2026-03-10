@@ -1,0 +1,643 @@
+/* ============================================================
+   main.css — App UI Styles
+   CV Generator | Form Panel, Layout, Buttons, Nav
+   ============================================================ */
+
+/* ─── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+
+/* ─── CSS Custom Properties ─────────────────────────────────── */
+:root {
+  /* Colors */
+  --bg:           #0f0f0f;
+  --surface:      #181818;
+  --surface-2:    #212121;
+  --border:       #2e2e2e;
+  --accent:       #c8f04d;
+  --accent-dim:   #a8cc3a;
+  --text:         #f0ede6;
+  --text-muted:   #7a7a7a;
+  --text-soft:    #b0aba0;
+
+  /* Typography */
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* Spacing & Shape */
+  --radius:       10px;
+  --radius-sm:    6px;
+  --transition:   0.2s ease;
+}
+
+/* ─── Reset ─────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── App Header ─────────────────────────────────────────────── */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 58px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.app-header .logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  user-select: none;
+}
+
+.app-header .logo span {
+  color: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ─── Main Layout ────────────────────────────────────────────── */
+.app-main {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────── */
+.btn {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #0f0f0f;
+}
+.btn-primary:hover {
+  background: var(--accent-dim);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(200, 240, 77, 0.2);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  font-size: 0.75rem;
+  text-align: center;
+  display: block;
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(200, 240, 77, 0.04);
+}
+
+.btn-remove {
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+  font-family: var(--font-body);
+}
+.btn-remove:hover {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.08);
+}
+
+/* ─── Form Panel ─────────────────────────────────────────────── */
+.form-panel {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 24px 24px 64px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.form-panel::-webkit-scrollbar {
+  width: 5px;
+}
+.form-panel::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+.form-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ─── Section Tab Navigation ─────────────────────────────────── */
+.section-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.section-nav button {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+  line-height: 1.4;
+}
+
+.section-nav button.active,
+.section-nav button:hover {
+  background: var(--surface-2);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── Form Sections (tab panels) ─────────────────────────────── */
+.form-section {
+  display: none;
+  animation: sectionFadeIn 0.2s ease;
+}
+
+.form-section.active {
+  display: block;
+}
+
+@keyframes sectionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Section Title ──────────────────────────────────────────── */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.2;
+}
+
+.section-title::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ─── Form Layout ────────────────────────────────────────────── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-row.full {
+  grid-template-columns: 1fr;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+/* ─── Form Labels ────────────────────────────────────────────── */
+.form-group label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ─── Form Inputs ────────────────────────────────────────────── */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  resize: vertical;
+  width: 100%;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.55;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200, 240, 77, 0.08);
+}
+
+.form-group textarea {
+  min-height: 90px;
+  line-height: 1.6;
+}
+
+/* ─── Repeatable Entry Cards ─────────────────────────────────── */
+.entry-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: border-color var(--transition);
+}
+
+.entry-card:focus-within {
+  border-color: rgba(200, 240, 77, 0.2);
+}
+
+.entry-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.entry-card-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ─── Skills Input & Tags ────────────────────────────────────── */
+.skills-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: -10px;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.skills-hint strong {
+  color: var(--text-soft);
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 42px;
+  padding: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+  transition: border-color var(--transition);
+  align-content: flex-start;
+}
+
+.skills-tags:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200, 240, 77, 0.08);
+}
+
+.skill-tag {
+  background: rgba(200, 240, 77, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(200, 240, 77, 0.22);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  animation: tagPop 0.15s ease;
+}
+
+@keyframes tagPop {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.skill-tag .remove-tag {
+  cursor: pointer;
+  opacity: 0.55;
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: opacity var(--transition);
+}
+
+.skill-tag .remove-tag:hover {
+  opacity: 1;
+}
+
+/* ─── Preview Panel ──────────────────────────────────────────── */
+.preview-panel {
+  background: #e8e4de;
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 24px 48px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  body {
+    height: auto;
+    overflow: auto;
+  }
+
+  .app-main {
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+
+  .form-panel {
+    overflow: visible;
+    padding-bottom: 32px;
+  }
+
+  .preview-panel {
+    min-height: 600px;
+    padding: 24px 16px 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 0 16px;
+  }
+
+  .form-panel {
+    padding: 16px 16px 48px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .header-actions .btn-outline {
+    display: none; /* hide Print on mobile, use Generate only */
+  }
+}
+
+/* ============================================================
+   FORM VALIDATION — Error States & Messages
+   ============================================================ */
+
+/* ─── Required Field Indicator ───────────────────────────────
+   Adds a subtle * after labels of required fields           */
+#section-personal #first-name ~ label,
+#section-personal #last-name  ~ label,
+#section-personal #email      ~ label {
+  /* handled via HTML — see index.html label text */
+}
+
+.label-required::after {
+  content: ' *';
+  color: #ff6b6b;
+  font-weight: 700;
+}
+
+/* ─── Optional Label Hint ─────────────────────────────────── */
+.label-optional {
+  font-weight: 400;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  opacity: 0.6;
+  font-size: 0.68rem;
+}
+
+/* ─── Error Input State ───────────────────────────────────── */
+.form-group input.input-error,
+.form-group textarea.input-error {
+  border-color: #ff6b6b !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.12) !important;
+  animation: shakeField 0.35s ease;
+}
+
+/* Shake animation — subtle, draws attention without being harsh */
+@keyframes shakeField {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-5px); }
+  40%  { transform: translateX(5px); }
+  60%  { transform: translateX(-3px); }
+  80%  { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
+
+/* ─── Inline Error Message ─────────────────────────────────── */
+.error-message {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #ff6b6b;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: errorFadeIn 0.2s ease;
+  line-height: 1.4;
+}
+
+.error-message::before {
+  content: '⚠';
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+@keyframes errorFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================================================
+   CV PREVIEW — Render Animations
+   ============================================================ */
+
+/* Triggered by cvRenderer.js on every render cycle */
+#cv-output.cv-updating {
+  opacity: 0.6;
+}
+
+#cv-output.cv-rendered {
+  animation: cvFadeIn 0.35s ease forwards;
+}
+
+@keyframes cvFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section stagger animation only runs when .cv-rendered is set
+   (triggered by Generate CV button click, not live typing) */
+#cv-output.cv-rendered .cv-section,
+#cv-output.cv-rendered .cv-header {
+  animation: sectionSlideIn 0.3s ease both;
+}
+
+#cv-output.cv-rendered .cv-header                { animation-delay: 0.00s; }
+#cv-output.cv-rendered .cv-section:nth-child(2)  { animation-delay: 0.05s; }
+#cv-output.cv-rendered .cv-section:nth-child(3)  { animation-delay: 0.10s; }
+#cv-output.cv-rendered .cv-section:nth-child(4)  { animation-delay: 0.15s; }
+#cv-output.cv-rendered .cv-section:nth-child(5)  { animation-delay: 0.20s; }
+#cv-output.cv-rendered .cv-section:nth-child(6)  { animation-delay: 0.25s; }
+
+@keyframes sectionSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================================================
+   TYPOGRAPHY & SPACING IMPROVEMENTS
+   ============================================================ */
+
+/* Better section title spacing */
+.section-title {
+  margin-bottom: 22px !important;
+}
+
+/* Breathing room between form groups */
+.form-group {
+  margin-bottom: 18px !important;
+}
+
+/* Slightly taller inputs for readability */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 10px 13px !important;
+  line-height: 1.5;
+}
+
+/* Better textarea height for descriptions */
+.form-group textarea {
+  min-height: 96px !important;
+}
+
+/* Improve entry card spacing */
+.entry-card {
+  padding: 18px !important;
+  margin-bottom: 14px !important;
+}
+
+/* Section nav pills — slightly more breathing room */
+.section-nav {
+  gap: 6px !important;
+  margin-bottom: 26px !important;
+}
+
+.section-nav button {
+  padding: 6px 14px !important;
+}
+
+/* Smooth transition on all inputs for polish */
+.form-group input,
+.form-group textarea {
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease !important;
+}
+
+/* Subtle hover state on inputs */
+.form-group input:hover:not(:focus),
+.form-group textarea:hover:not(:focus) {
+  border-color: #3e3e3e;
+}

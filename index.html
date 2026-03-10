@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/preview.css" />
+</head>
+<body>
+
+  <!-- ─── App Header ─────────────────────────────────────────── -->
+  <header class="app-header">
+    <div class="logo">CV<span>.</span>Craft</div>
+    <div class="header-actions">
+      <button class="btn btn-outline" id="btn-print" onclick="window.print()">
+        ⎙ Print CV
+      </button>
+      <button class="btn btn-primary" id="btn-generate">
+        Generate CV
+      </button>
+    </div>
+  </header>
+
+  <!-- ─── Main Layout ───────────────────────────────────────── -->
+  <main class="app-main">
+
+    <!-- ── Left: Form Panel ──────────────────────────────────── -->
+    <aside class="form-panel" aria-label="CV Form">
+
+      <!-- Section Navigation Tabs -->
+      <nav class="section-nav" role="tablist" aria-label="Form sections">
+        <button role="tab" aria-selected="true"  data-target="section-personal"    class="active">Personal</button>
+        <button role="tab" aria-selected="false" data-target="section-summary">Summary</button>
+        <button role="tab" aria-selected="false" data-target="section-skills">Skills</button>
+        <button role="tab" aria-selected="false" data-target="section-education">Education</button>
+        <button role="tab" aria-selected="false" data-target="section-experience">Experience</button>
+        <button role="tab" aria-selected="false" data-target="section-projects">Projects</button>
+      </nav>
+
+      <!-- ── Section: Personal Information ──────────────────── -->
+      <section id="section-personal" class="form-section active" role="tabpanel" aria-labelledby="tab-personal">
+        <h2 class="section-title">Personal Information</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name" class="label-required">First Name</label>
+            <input type="text" id="first-name" name="firstName" placeholder="Jane" autocomplete="given-name" />
+          </div>
+          <div class="form-group">
+            <label for="last-name" class="label-required">Last Name</label>
+            <input type="text" id="last-name" name="lastName" placeholder="Doe" autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="job-title">Job Title / Role</label>
+            <input type="text" id="job-title" name="jobTitle" placeholder="Senior Frontend Engineer" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email" class="label-required">Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 555 000 0000" autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" placeholder="New York, USA" />
+          </div>
+          <div class="form-group">
+            <label for="website">Website / Portfolio</label>
+            <input type="url" id="website" name="website" placeholder="https://janedoe.dev" />
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="linkedin">LinkedIn</label>
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/janedoe" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Section: Profile Summary ───────────────────────── -->
+      <section id="section-summary" class="form-section" role="tabpanel">
+        <h2 class="section-title">Profile Summary</h2>
+        <div class="form-group">
+          <label for="summary">Professional Summary</label>
+          <textarea id="summary" name="summary" rows="7" placeholder="Write a compelling 2–4 sentence summary of your professional background, key skills, and what you bring to the table…"></textarea>
+        </div>
+      </section>
+
+      <!-- ── Section: Skills ─────────────────────────────────── -->
+      <section id="section-skills" class="form-section" role="tabpanel">
+        <h2 class="section-title">Skills</h2>
+        <p class="skills-hint">Type a skill and press <strong>Enter</strong> or <strong>comma</strong> to add it.</p>
+
+        <div class="skills-tags" id="skills-tags-container" aria-label="Added skills">
+          <!-- skill tags injected here by JS -->
+        </div>
+
+        <div class="form-group">
+          <label for="skill-input">Add Skill</label>
+          <input type="text" id="skill-input" name="skillInput" placeholder="e.g. React, TypeScript, Figma…" />
+        </div>
+      </section>
+
+      <!-- ── Section: Education ──────────────────────────────── -->
+      <section id="section-education" class="form-section" role="tabpanel">
+        <h2 class="section-title">Education</h2>
+        <div id="education-entries">
+
+          <div class="entry-card" data-entry="education">
+            <div class="entry-card-header">
+              <span class="entry-card-label">Entry 1</span>
+              <button class="btn-remove" aria-label="Remove this entry">✕ Remove</button>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Degree / Qualification</label>
+                <input type="text" name="edu-degree" placeholder="B.Sc. Computer Science" />
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Institution</label>
+                <input type="text" name="edu-institution" placeholder="University of California, Berkeley" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Start Year</label>
+                <input type="text" name="edu-start" placeholder="2018" />
+              </div>
+              <div class="form-group">
+                <label>End Year</label>
+                <input type="text" name="edu-end" placeholder="2022" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Notes (optional)</label>
+              <textarea name="edu-notes" rows="2" placeholder="Honors, relevant coursework, thesis…"></textarea>
+            </div>
+          </div>
+
+        </div>
+        <button class="btn btn-ghost" id="add-education">+ Add Education</button>
+      </section>
+
+      <!-- ── Section: Work Experience ───────────────────────── -->
+      <section id="section-experience" class="form-section" role="tabpanel">
+        <h2 class="section-title">Work Experience</h2>
+        <div id="experience-entries">
+
+          <div class="entry-card" data-entry="experience">
+            <div class="entry-card-header">
+              <span class="entry-card-label">Entry 1</span>
+              <button class="btn-remove" aria-label="Remove this entry">✕ Remove</button>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Job Title</label>
+                <input type="text" name="exp-title" placeholder="Frontend Engineer" />
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Company</label>
+                <input type="text" name="exp-company" placeholder="Acme Corp" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Start Date</label>
+                <input type="text" name="exp-start" placeholder="Jan 2022" />
+              </div>
+              <div class="form-group">
+                <label>End Date</label>
+                <input type="text" name="exp-end" placeholder="Present" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea name="exp-desc" rows="4" placeholder="Describe your responsibilities, achievements, and impact. Use bullet-point style for clarity."></textarea>
+            </div>
+          </div>
+
+        </div>
+        <button class="btn btn-ghost" id="add-experience">+ Add Experience</button>
+      </section>
+
+      <!-- ── Section: Projects ───────────────────────────────── -->
+      <section id="section-projects" class="form-section" role="tabpanel">
+        <h2 class="section-title">Projects</h2>
+        <div id="project-entries">
+
+          <div class="entry-card" data-entry="project">
+            <div class="entry-card-header">
+              <span class="entry-card-label">Entry 1</span>
+              <button class="btn-remove" aria-label="Remove this entry">✕ Remove</button>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Project Name</label>
+                <input type="text" name="proj-name" placeholder="Personal Portfolio" />
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Tech Stack</label>
+                <input type="text" name="proj-stack" placeholder="React, Node.js, PostgreSQL" />
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="form-group">
+                <label>Live URL / Repo</label>
+                <input type="url" name="proj-url" placeholder="https://github.com/janedoe/project" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea name="proj-desc" rows="3" placeholder="What does it do? What problem does it solve? What was your role?"></textarea>
+            </div>
+          </div>
+
+        </div>
+        <button class="btn btn-ghost" id="add-project">+ Add Project</button>
+      </section>
+
+    </aside><!-- /form-panel -->
+
+    <!-- ── Right: Preview Panel ────────────────────────────── -->
+    <section class="preview-panel" aria-label="CV Preview">
+      <article id="cv-output" aria-live="polite">
+
+        <!-- Empty State (shown before first generation) -->
+        <div class="cv-empty" id="cv-empty-state">
+          <div class="empty-icon">📄</div>
+          <p>Fill in the form and click <strong>Generate CV</strong> to see your preview here.</p>
+        </div>
+
+        <!-- CV Content (injected by cvRenderer.js) -->
+        <!-- Example structure for reference — populated dynamically:
+
+        <header class="cv-header">
+          <h1 class="cv-name">Jane Doe</h1>
+          <p class="cv-job-title">Senior Frontend Engineer</p>
+          <div class="cv-contact">
+            <span>jane@example.com</span>
+            <span>+1 555 000 0000</span>
+            <span>New York, USA</span>
+            <span>janedoe.dev</span>
+          </div>
+        </header>
+
+        <section class="cv-section">
+          <h2 class="cv-section-title">Profile</h2>
+          <p class="cv-summary">…</p>
+        </section>
+
+        <section class="cv-section">
+          <h2 class="cv-section-title">Skills</h2>
+          <div class="cv-skills-list">
+            <span class="cv-skill-tag">React</span>
+            <span class="cv-skill-tag">TypeScript</span>
+          </div>
+        </section>
+
+        <section class="cv-section">
+          <h2 class="cv-section-title">Experience</h2>
+          <div class="cv-entry">
+            <div class="cv-entry-header">
+              <span class="cv-entry-title">Frontend Engineer</span>
+              <span class="cv-entry-date">Jan 2022 – Present</span>
+            </div>
+            <div class="cv-entry-sub">Acme Corp</div>
+            <p class="cv-entry-desc">…</p>
+          </div>
+        </section>
+
+        -->
+
+      </article>
+    </section><!-- /preview-panel -->
+
+  </main>
+
+  <!-- ─── Scripts ──────────────────────────────────────────────
+       Load order matters:
+       1. store.js        – data model
+       2. formHandler.js  – reads form, writes to store
+       3. cvRenderer.js   – reads store, writes preview
+       4. pdfExport.js    – print/download
+       5. app.js          – wires everything together
+  ──────────────────────────────────────────────────────────── -->
+  <script src="js/store.js"></script>
+  <script src="js/formHandler.js"></script>
+  <script src="js/cvRenderer.js"></script>
+  <script src="js/pdfExport.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
