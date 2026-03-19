@@ -121,6 +121,19 @@ body {
   transform: translateY(0);
 }
 
+.btn-secondary {
+  background: #3b82f6;
+  color: white;
+}
+.btn-secondary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.2);
+}
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
 .btn-outline {
   background: transparent;
   color: var(--text);
